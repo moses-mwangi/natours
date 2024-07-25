@@ -13,18 +13,20 @@ const app = require("./app");
 /////it enable accesibility of env file
 dotenv.config({ path: "./config.env" });
 
-const DB = process.env.DATABASE.replace(
-  "<PASSWORD>",
-  process.env.DATABASE_PASSWORD
-);
+// const DB = process.env.DATABASE.replace(
+//   "<PASSWORD>",
+//   process.env.DATABASE_PASSWORD
+// );
+
+const DB = process.env.DATABASE;
 
 mongoose.connect(DB).then((con) => {
   console.log("Database connection successfull");
 });
 
-const port = process.env.PORT;
-const server = app.listen(port, "127.0.0.1", () => {
-  console.log(`listening to port ${port} ll`);
+// const port = process.env.PORT;
+const server = app.listen(3001, "127.0.0.1", () => {
+  console.log(`listening to port 3001 ll`);
 });
 
 ///handling mongoDb error like bad auth eg wrong paasworg / connection to database problem

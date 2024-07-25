@@ -6,6 +6,7 @@ const cookieParser = require("cookie-parser");
 const helmet = require("helmet");
 const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
+const cors = require("cors");
 const AppError = require("./utils/appError");
 const globalErrorHandler = require("./controllers/errorControler");
 const tourRouter = require("./routes/tourRoute");
@@ -13,6 +14,13 @@ const userRouter = require("./routes/userRoute");
 const reviewRouter = require("./routes/reviewRoute");
 
 const app = express();
+
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
 
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
