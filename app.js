@@ -15,14 +15,27 @@ const reviewRouter = require("./routes/reviewRoute");
 
 const app = express();
 
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    credentials: true,
-  })
-);
+const allowedOrigins = [
+  "https://try-one-xi.vercel.app",
+  "http://localhost:3002",
+  "http://localhost:3000",
+  "https://try-lake.vercel.app",
+];
 
-app.set("view engine", "pug");
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+
+https: app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 
 app.use(express.static(path.join(__dirname, "public")));
