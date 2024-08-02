@@ -2,10 +2,11 @@
   "name": "natours",
   "version": "1.0.0",
   "description": "learning node express and mongodb",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
-    "debug": "ndb server.js"
+    "debug": "ndb server.js",
+    "build": "node server.js"
   },
   "author": "moses",
   "license": "ISC",

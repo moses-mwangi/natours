@@ -18,7 +18,9 @@ dotenv.config({ path: "./config.env" });
 //   process.env.DATABASE_PASSWORD
 // );
 
-const DB = process.env.DATABASE;
+const DB =
+  process.env.DATABASE ||
+  "mongodb+srv://mosesmwangime:9SPqAj4JOaXBxDrI@cluster0.sqjq7km.mongodb.net/natours?retryWrites=true&w=majority&appName=Cluster0";
 
 mongoose.connect(DB).then((con) => {
   console.log("Database connection successfull");
